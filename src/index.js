@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Stream from './components/Stream';
+import configureStore from './stores/configureStore';
+import * as actions from './actions';
 
-const title = 'My Minimal React Webpack Babel Setup';
+const tracks = [
+  {
+    title: 'Some track'
+  },
+  {
+    title: 'Some other track'
+  }
+];
+
+const store = configureStore();
+store.dispatch(actions.setTracks(tracks));
 
 ReactDOM.render(
-  <div>{title}</div>,
+  <Stream />,
   document.getElementById('app')
 );
-
-console.log("hello simple webpack react setup");
 
 module.hot.accept();
